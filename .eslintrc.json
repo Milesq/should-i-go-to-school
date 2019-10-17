@@ -1,0 +1,23 @@
+{
+    "env": {
+        "commonjs": true,
+        "node": true,
+        "browser": true
+    },
+    "extends": ["prettier", "eslint:recommended"],
+    "plugins": ["prettier"],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "linebreak-style": ["error", "windows"],
+        "indent": [
+            "error",
+            4
+        ],
+        "no-unused-vars": "warn",
+        "no-console": "off"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "should-i-go-to-school",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "ts-node src/main",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix ."
+    },
+    "author": "Milesq",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "nodemon": "^1.19.4",
+        "puppeteer": "^1.20.0",
+        "ts-node": "^8.4.1"
+    },
+    "devDependencies": {
+        "@types/node": "^12.11.1",
+        "@types/puppeteer": "^1.20.2",
+        "eslint": "^6.5.1",
+        "eslint-config-prettier": "^6.4.0",
+        "eslint-plugin-prettier": "^3.1.1",
+        "prettier": "^1.18.2",
+        "typescript": "^3.6.4"
+    }
+}
