@@ -17,8 +17,7 @@ export default async () => {
 
     const data = await getData(page);
 
-    writeFileSync('./data.json', data);
-    // writeFileSync('./data.json', JSON.stringify(data));
+    writeFileSync('./data.json', JSON.stringify(data));
 
     await browser.close();
 };
