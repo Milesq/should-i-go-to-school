@@ -47,7 +47,8 @@ export default async (page: puppeteer.Page): Promise<Lesson[]> => {
 
     next();
 
-    await waitUntil(() => lessons.length === i, () => i);
+    await waitUntil(() => lessons.length === i, () => console.log('Download data for lesson: ', i));
+    console.log(computedLessons);
 
     await page.screenshot({ path: 'example.png' });
     await page.close();

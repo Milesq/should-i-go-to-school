@@ -23,15 +23,18 @@ export default async (page: puppeteer.Page) => {
         PASS
     );
 
+    console.log('Login');
     await page.click('input[type=submit]');
     await page.waitForNavigation({ waitUntil: 'load' });
 
     // Go to frequency tab
+    console.log('Go to school');
     await page.click(SCHOOL_LINK); // Go to school
 
     await page.waitForSelector(FREQUENCY_TAB);
     await delay(3000);
 
+    console.log('Got to frequency tab');
     await page.click(FREQUENCY_TAB); // Got to frequency tab
     await delay(3000);
 
