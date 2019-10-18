@@ -16,7 +16,7 @@ export default async () => {
     await goToFrequency(page);
 
     const data = await getData(page);
-    writeFileSync('./data.txt', JSON.stringify(data));
+    writeFileSync('./data.json', JSON.stringify(data));
 
     await browser.close();
 };

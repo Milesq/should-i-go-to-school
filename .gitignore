@@ -8,4 +8,4 @@ node_modules/
 
 *.lock
 
-*.txt
+data.json
