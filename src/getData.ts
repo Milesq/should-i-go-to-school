@@ -12,39 +12,36 @@ interface Lesson {
     readonly absence: number;
 }
 
-export default async (page: puppeteer.Page): Promise<Lesson[]> => {
+// export default async (page: puppeteer.Page): Promise<Lesson[]> => {
+export default async (page: puppeteer.Page): Promise<string> => {
     await page.click(ARROW);
     await page.click(ARROW);
     await delay(30);
 
     const lessons = await getLessons(page);
 
-    const down = () =>
-        new Promise(resolve => {
-            page.keyboard.press('ArrowDown');
-            delay(300).then(resolve);
-        });
+    const press = async (key: string) => page.keyboard.press(key);
 
-    const space = () =>
-        new Promise(resolve => {
-            page.keyboard.press('Space');
-            delay(1500).then(resolve);
-        });
+    const next = () =>
+        page
+            .click(ARROW)
+            .then(() => delay(30))
+            .then(() => press('ArrowDown'))
+            .then(() => delay(30))
+            .then(() => press('Space'))
+            .then(() => delay(300));
 
     const computedLessons: any[] = [];
     let i: number = 0;
 
-    const next = () => page.click(ARROW).then(down).then(space);
-
-    page.on('requestfinished', ev => {
+    page.on('requestfinished', async ev => {
         if (i >= lessons.length) return;
 
         computedLessons.push({
             type: lessons[i],
-            res: ev.response().text()
+            resp: await ev.response().text()
         });
 
-        ev.response().text();
         ++i;
         next();
     });
@@ -54,9 +51,9 @@ export default async (page: puppeteer.Page): Promise<Lesson[]> => {
     await waitUntil(() => lessons.length === i, () => i);
 
     await page.screenshot({ path: 'example.png' });
+    await page.close();
 
-    console.log(computedLessons);
-    return [];
+    return JSON.stringify(computedLessons);
 };
 
 async function getLessons(page: puppeteer.Page): Promise<string[]> {
@@ -68,11 +65,13 @@ async function getLessons(page: puppeteer.Page): Promise<string[]> {
     }, WRAPPER);
 }
 
-function waitUntil(cb: () => boolean, elseCb: () => any, ms: number = 50) {
+function waitUntil(cb: () => boolean, uncompleteCb: () => void = () => {}, ms: number = 50) {
     return new Promise(resolve => {
-        setInterval(() => {
-            if (cb()) resolve();
-            else console.log('test...', elseCb());
+        const id = setInterval(() => {
+            if (cb()) {
+                clearInterval(id);
+                resolve();
+            } else uncompleteCb();
         }, ms);
     });
 }
