@@ -11,7 +11,8 @@ export default async page => {
     const { LOGIN, PASS } = process.env;
 
     // Login
-    await page.evaluate((LOGIN: string, PASS: string) => {
+    await page.evaluate(
+        (LOGIN: string, PASS: string) => {
             (<HTMLInputElement>document.getElementById('LoginName')).value = LOGIN;
             (<HTMLInputElement>document.getElementById('Password')).value = PASS;
         },
@@ -34,4 +35,4 @@ export default async page => {
     await page.evaluate(STATS_LINK => {
         (<HTMLElement>document.querySelectorAll(STATS_LINK)[1]).click();
     }, STATS_LINK);
-}
+};

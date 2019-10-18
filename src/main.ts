@@ -19,7 +19,8 @@ function nextLesson() {
     logLesson('Matematyka');
 }
 
-program.option('-d, --download-data', '', download)
+program
+    .option('-d, --download-data', '', download)
     .option('-n, --next-lesson', '', nextLesson)
     .option('-l, --lesson [name]', 'Lesson name', logLesson);
 

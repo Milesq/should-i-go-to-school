@@ -3,7 +3,7 @@ import goToFrequency from './goToFrequency';
 
 export default async () => {
     // Init
-    const browser = await puppeteer.launch({headless: false});
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
 
     await page.setViewport({
@@ -15,4 +15,4 @@ export default async () => {
 
     await page.screenshot({ path: 'example.png' });
     await browser.close();
-}
+};
