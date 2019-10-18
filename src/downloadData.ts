@@ -18,6 +18,5 @@ export default async () => {
     const data = await getData(page);
     writeFileSync('./data.txt', JSON.stringify(data));
 
-    await page.screenshot({ path: 'example.png' });
     await browser.close();
 };
