@@ -1,5 +1,7 @@
-const puppeteer = require('puppeteer');
+import { writeFileSync } from 'fs';
+import * as puppeteer from 'puppeteer';
 import goToFrequency from './goToFrequency';
+import getData from './getData';
 
 export default async () => {
     // Init
@@ -12,6 +14,9 @@ export default async () => {
     });
 
     await goToFrequency(page);
+
+    const data = await getData(page);
+    writeFileSync('./data.txt', JSON.stringify(data));
 
     await page.screenshot({ path: 'example.png' });
     await browser.close();
