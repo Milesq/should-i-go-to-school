@@ -15,10 +15,6 @@ export function download(): void {
     });
 }
 
-export function nextLesson(): void {
-    logLesson('Matematyka');
-}
-
 function parseSummary(frequencyData: Lesson[]): string {
     return frequencyData
         .map((el: Lesson) => {
