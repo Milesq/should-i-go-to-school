@@ -42,5 +42,6 @@ export function showDanger(): void {
 }
 
 export function logLesson(name: string): void {
-    console.log('Lesson: ', name);
+    const lesson = frequencyData.find(({ type }) => type.toLowerCase() === name.toLowerCase());
+    console.log(parseSummary([lesson]));
 }
