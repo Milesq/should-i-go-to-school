@@ -1,4 +1,4 @@
-import Lesson from './Lesson';
+import Lesson from '../Lesson';
 
 export default (data: string): Lesson => {
     let presence: number = 0;

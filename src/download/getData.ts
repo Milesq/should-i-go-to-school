@@ -1,8 +1,8 @@
 // eslint-disable-next-line
 import * as puppeteer from 'puppeteer';
-import { delay } from './utils';
+import { delay } from '../utils';
 import normalize from './normalizeData';
-import Lesson from './Lesson';
+import Lesson from '../Lesson';
 
 const ARROW = '#ext-expandtrigger-3';
 const WRAPPER =

@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import * as puppeteer from 'puppeteer';
 
-import { delay } from './utils';
+import { delay } from '../utils';
 
 const UONET = 'https://uonetplus.vulcan.net.pl/bydgoszcz/LoginEndpoint.aspx';
 const FREQUENCY_TAB = '#app-menu > div > *:nth-child(3)';

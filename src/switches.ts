@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 
-import downloadData from './downloadData';
+import downloadData from './download/downloadData';
 import Lesson from './Lesson';
 
 function frequencyPercentage({ presence, absence }: Lesson): number {
