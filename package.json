@@ -5,6 +5,7 @@
     "main": "src/main.js",
     "scripts": {
         "start": "ts-node src/main",
+        "build": "tsc --outDir dist --sourcemap false",
         "lint": "eslint . --ext .ts",
         "lint:fix": "yarn lint --fix"
     },
