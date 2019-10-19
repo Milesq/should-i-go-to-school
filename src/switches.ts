@@ -20,9 +20,18 @@ export function nextLesson(): void {
 
 function parseSummary(frequencyData: Lesson[]): string {
     return frequencyData
-        .map(
-            (el: Lesson) => `${Math.round(frequencyPercentage(el) * 100) / 100}%\t\t|\t\t${el.type}`
-        )
+        .map((el: Lesson) => {
+            let howManyTo50 = ' ';
+
+            if (frequencyPercentage(el) < 50) {
+                const { absence, presence }: Lesson = el;
+                howManyTo50 = absence - presence + '';
+            }
+
+            return `${Math.round(frequencyPercentage(el) * 100) / 100}%\t\t${howManyTo50}|\t${
+                el.type
+            }`;
+        })
         .join('\n');
 }
 
