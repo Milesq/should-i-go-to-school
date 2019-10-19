@@ -26,7 +26,11 @@ function parseSummary(frequencyData: Lesson[]): string {
         .join('\n');
 }
 
-const frequencyData: Lesson[] = JSON.parse(readFileSync('./data.json', 'utf-8'));
+let frequencyData: Lesson[] = JSON.parse(readFileSync('./data.json', 'utf-8'));
+frequencyData = frequencyData.filter(
+    lesson => frequencyPercentage(lesson) > 0 && lesson.type != 'Wychowanie fizyczne'
+);
+
 export function showSummary(): void {
     console.log(parseSummary(frequencyData));
 }
@@ -34,7 +38,7 @@ export function showSummary(): void {
 export function showDanger(): void {
     const filtered = frequencyData.filter(lesson => frequencyPercentage(lesson) <= 50);
 
-    console.log(parseSummary(filtered));
+    console.log(parseSummary(filtered), '\n', filtered.length);
 }
 
 export function logLesson(name: string): void {
