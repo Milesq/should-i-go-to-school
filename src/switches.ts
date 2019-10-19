@@ -2,8 +2,9 @@ import { readFileSync } from 'fs';
 
 import downloadData from './download/downloadData';
 import Lesson from './Lesson';
+import { getFrequencyData } from './getFrequencyData';
 
-function frequencyPercentage({ presence, absence }: Lesson): number {
+export function frequencyPercentage({ presence, absence }: Lesson): number {
     return (presence / (absence + presence)) * 100;
 }
 
@@ -35,10 +36,7 @@ function parseSummary(frequencyData: Lesson[]): string {
         .join('\n');
 }
 
-let frequencyData: Lesson[] = JSON.parse(readFileSync('./data.json', 'utf-8'));
-frequencyData = frequencyData.filter(
-    lesson => frequencyPercentage(lesson) > 0 && lesson.type != 'Wychowanie fizyczne'
-);
+const frequencyData = getFrequencyData();
 
 export function showSummary(): void {
     console.log(parseSummary(frequencyData));
