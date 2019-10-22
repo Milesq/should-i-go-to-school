@@ -18,14 +18,13 @@ export function download(): void {
 function parseSummary(frequencyData: Lesson[]): string {
     return frequencyData
         .map((el: Lesson) => {
-            let howManyTo50 = ' ';
+            const { absence, presence }: Lesson = el;
+            const howManyTo50 = absence - presence;
 
-            if (frequencyPercentage(el) < 50) {
-                const { absence, presence }: Lesson = el;
-                howManyTo50 = absence - presence + '';
-            }
+            const inMinus = howManyTo50 > 0 ? howManyTo50 : ' ';
+            const inPlus = howManyTo50 < 0 ? -howManyTo50 : ' ';
 
-            return `${Math.round(frequencyPercentage(el) * 100) / 100}%\t\t${howManyTo50}|\t${
+            return `${Math.round(frequencyPercentage(el) * 100) / 100}%\t\t${inMinus}|${inPlus}\t${
                 el.type
             }`;
         })

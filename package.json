@@ -15,10 +15,10 @@
         "commander": "^3.0.2",
         "dotenv": "^8.2.0",
         "puppeteer": "^1.20.0",
-        "select-option-cli": "^1.0.1",
-        "ts-node": "^8.4.1"
+        "select-option-cli": "^1.0.1"
     },
     "devDependencies": {
+        "ts-node": "^8.4.1",
         "@types/commander": "^2.12.2",
         "@types/node": "^12.11.1",
         "@types/puppeteer": "^1.20.2",
