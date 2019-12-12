@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import Lesson from './Lesson';
 import { frequencyPercentage } from './switches';
 
-const unNeeded = ['Wychowanie fizyczne', 'Godzina  z wychowawcą'];
+const unNeeded = ['Wychowanie fizyczne', 'Godzina  z wychowawcą', 'Zajęcia świetlicowe'];
 
 export const getFrequencyData = (): Lesson[] => {
     const frequencyData: Lesson[] = JSON.parse(readFileSync('./data.json', 'utf-8'));

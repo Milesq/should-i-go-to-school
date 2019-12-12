@@ -5,7 +5,7 @@ import getData from './getData';
 
 export default async () => {
     // Init
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
 
     await page.setViewport({
